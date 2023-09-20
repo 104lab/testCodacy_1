@@ -1,0 +1,162 @@
+# Customise this file, documentation can be found here:
+# https://github.com/fastlane/fastlane/tree/master/fastlane/docs
+# All available actions: https://docs.fastlane.tools/actions
+# can also be listed using the `fastlane actions` command
+
+# Change the syntax highlighting to Ruby
+# All lines starting with a # are ignored when running `fastlane`
+
+# If you want to automatically update fastlane if a new version is available:
+# update_fastlane
+
+# This is the minimum version number required.
+# Update this, if you use features of a newer version
+# fastlane_version "2.59.0"
+
+default_platform :ios 
+
+keychain_dev_name="keychain_Dev"
+keychain_dev_pwd=ENV["CERTIFICATE_PASSWORD"]
+certificate_dev_path="./keystore/Certificates_d.p12"
+certificate_dev_pwd=ENV["CERTIFICATE_PASSWORD"]
+
+keychain_distribution_name="keychain_distribution"
+keychain_distribution_pwd=ENV["CERTIFICATE_PASSWORD"]
+certificate_distribution_path="./keystore/Certificates_p.p12"
+certificate_distribution_pwd=ENV["CERTIFICATE_PASSWORD"]
+
+crashlytics_email="aaron.du@104.com.tw"
+crashlytics_token=ENV["CRASHLYTICS_TOKEN"]
+crashlytics_secret=ENV["CRASHLYTICS_SECRET"]
+
+fastlane_scheme_name="Nabi"
+
+platform :ios do
+  before_all do
+    # ENV["SLACK_URL"] = "https://hooks.slack.com/services/..."
+    # cocoapods(repo_update: true)
+    
+    #download provisioning profiles
+    #sh "fastlane sigh download_all"
+    #sh "ls -l"
+
+    #scan(
+    #    scheme: "#{fastlane_scheme_name}",
+    #    output_directory: "./ios_unit_report_output",
+    #    device: "iPhone 4s (8.1)"
+    #)
+  end
+
+  desc "Runs all the tests"
+  lane :test do
+    scan
+  end
+
+  desc "Submit a new Beta Build to Apple TestFlight"
+  desc "This will also make sure the profile is up to date"
+  lane :beta do
+    #sh "pwd"
+    
+    update_code_signing_settings(
+      use_automatic_signing: false,
+      path: "./Nabi.xcodeproj",
+      targets: "Nabi",
+      team_id: "7J996JA2D5",
+      code_sign_identity: "iPhone Developer: CAC Dev (QD3VAD2V2P)",
+      profile_name: "CAC Test Developer Provisioning Profile",
+      bundle_identifier: "tw.com.104.nabi"
+    )
+    
+    gym(
+        scheme: "#{fastlane_scheme_name}",
+        clean: true,
+        configuration: "Debug",
+        export_method: "development",
+        export_options: "./fastlane/ExportOptions.plist",
+        output_directory: "./ios_output" ,
+        output_name: "result.ipa",
+        codesigning_identity: "iPhone Developer: CAC Dev (QD3VAD2V2P)"
+    )
+  end
+
+  lane :AdHoc do
+    #sh "pwd"
+    gym(
+        scheme: "#{fastlane_scheme_name}",
+        clean: true,
+        configuration: "AdHoc",
+        export_method: "ad-hoc",
+        export_options: "/Users/travis/build/104corp/104cac-Nabi-iOS/fastlane/AdHoc_ExportOptions.plist",
+        output_directory: "./ios_output" ,
+        output_name: "result.ipa",
+        codesigning_identity: "iPhone Distribution: 104 CORPORATION (7J996JA2D5)"
+    )
+  end
+
+  desc "Deploy a new version to the App Store"
+  lane :release do
+    
+    update_code_signing_settings(
+      use_automatic_signing: false,
+      path: "./Nabi.xcodeproj",
+      targets: "Nabi",
+      team_id: "7J996JA2D5",
+      code_sign_identity: "iPhone Distribution: 104 CORPORATION (7J996JA2D5)",
+      profile_name: "104 Nabi Distribution Profile",
+      bundle_identifier: "tw.com.104.nabi"
+    )
+    
+    gym(
+        scheme: "#{fastlane_scheme_name}",
+        clean: true,
+        configuration: "Release",
+        export_method: "app-store",
+        export_options: "./fastlane/Distribution_ExportOptions.plist",
+        output_directory: "./ios_output" ,
+        output_name: "result.ipa",
+        codesigning_identity: "iPhone Distribution: 104 CORPORATION (7J996JA2D5)"
+    )
+
+        
+        
+    # deliver(
+    #     username: "cac@104.com.tw",
+    #     team_name: "104 CORPORATION",
+    #     skip_screenshots: true,
+    #     skip_metadata: true,
+    #     app_version: "",
+    #     submit_for_review: false
+    # )
+
+    upload_to_testflight(
+        username: "cac@104.com.tw",
+        team_name: "104 CORPORATION",
+	    skip_waiting_for_build_processing: true
+    )
+
+  end
+
+  # You can define as many lanes as you want
+
+  after_all do |lane|
+    # This block is called, only if the executed lane was successful
+
+    # slack(
+    #   message: "Successfully deployed new App Update."
+    # )
+  end
+
+  error do |lane, exception|
+    # slack(
+    #   message: exception.message,
+    #   success: false
+    # )
+  end
+end
+
+
+# More information about multiple platforms in fastlane: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Platforms.md
+# All available actions: https://docs.fastlane.tools/actions
+
+# fastlane reports which actions are used. No personal data is recorded. 
+# Learn more at https://github.com/fastlane/fastlane#metrics

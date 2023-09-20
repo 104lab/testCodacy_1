@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Version</key>
+	<integer>2</integer>
+	<key>Base URLs</key>
+	<dict>
+		<key>1</key>
+		<string>online</string>
+		<key>2</key>
+		<string>staging</string>
+		<key>3</key>
+		<string>lab</string>
+	</dict>
+	<key>Base URL</key>
+	<string>online</string>
+	<key>Mobile Base URLs</key>
+	<dict>
+		<key>1</key>
+		<string>http://mobile.104.com.tw</string>
+		<key>2</key>
+		<string>http://mobile.104-staging.com.tw</string>
+		<key>3</key>
+		<string>http://mobile.104-dev.com.tw</string>
+	</dict>
+	<key>Mobile Base URL</key>
+	<string>http://mobile.104.com.tw</string>
+	<key>AppID</key>
+	<string>18</string>
+</dict>
+</plist>
