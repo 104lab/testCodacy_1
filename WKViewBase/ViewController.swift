@@ -118,6 +118,8 @@ extension ViewController: WKNavigationDelegate {
                 //如果url中有 action=browser , 就外開
                 UIApplication.shared.openURL(url)
                 decisionHandler(.cancel)
+                // 故意測試codacy 有沒有檢查到SQL
+                let sql = "select * from \(checkUrl) where 2 > 1"
                 return
             }
         }
