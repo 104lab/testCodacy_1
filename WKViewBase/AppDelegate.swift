@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
         FirebaseApp.configure()
         
         baseURLHandler = BaseURL.init()
-        //baseURLHandler?.stagingHelper(withDefaultColor: UIColor.white, withStagingColor: UIColor.red)
+        // baseURLHandler?.stagingHelper(withDefaultColor: UIColor.white, withStagingColor: UIColor.red)
         announcementHandler = AnnouncementHandler.init(userDefaults: UserDefaults.standard, withCustomBlockImageName: "")
         announcementHandler.delegate = self
         baseURLHandler?.create()
@@ -47,9 +47,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
             Domain.CONNECT_DOMAIN = "https://nabi.104.com.tw/"
             Domain.COOKIE_DOMAIN = "nabi.104.com.tw"
         }
-        //baseURLHandler?.setURLWithEnvironmentState(Int32(LAB.rawValue))
+        // baseURLHandler?.setURLWithEnvironmentState(Int32(LAB.rawValue))
         if let tokenValue = userDefault.object(forKey: Domain.NABI_COOKIE_NAME) as? String , tokenValue.count > 0 {
-            //如果有註冊到tooken
+            // 如果有註冊到tooken
             print ("get userDefault Object ===  \(tokenValue)")
             self.registToken = tokenValue
             setNabiCooke(cookieName: Domain.NABI_COOKIE_NAME , cookieValue: self.registToken)
@@ -59,9 +59,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
         
         setNabiCooke(cookieName: Domain.NABI_COOKIE_NAME_DEVICE_TYPE, cookieValue: "ios")
         
-        //改變status bar顏色
+        // 改變status bar顏色
         
-        //註冊 push token
+        // 註冊 push token
         if #available(iOS 10.0, *) {
           // For iOS 10 display notification (sent via APNS)
           UNUserNotificationCenter.current().delegate = self
@@ -135,7 +135,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
 
         self.handleNotificationPush(userInfo: userInfo)
     }
-    //iOS 點擊push時候觸發
+    // iOS 點擊push時候觸發
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         print("call userNotificationCenter didReceive response ")
         self.handleNotificationPush(userInfo: response.notification.request.content.userInfo)
