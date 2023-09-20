@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     let ScreenHeight: CGFloat = UIScreen.main.bounds.height
     let StatusBarHeight: CGFloat = UIApplication.shared.statusBarFrame.height
     let awsToken = "ASDDS/wxswilsone2DEIDFkajlsejioSDJSDIOFJLEWJFL"
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         if #available(iOS 13.0, *) {
             return .darkContent
