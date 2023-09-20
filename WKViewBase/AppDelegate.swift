@@ -221,7 +221,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
     /// 將資料放入Cookie中 , expires 90天
     /// - Parameter cookieName: 要存放於cookie的名稱
     func setNabiCooke(cookieName: String , cookieValue: String?) {
-        //要先刪除掉 NABIAPPSID
+        // 要先刪除掉 NABIAPPSID
         
         let cstorage = HTTPCookieStorage.shared
         if let cookies = cstorage.cookies {
