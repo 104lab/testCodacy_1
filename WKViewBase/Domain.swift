@@ -18,10 +18,10 @@ class Domain: NSObject {
     static var NABI_COOKIE_NAME_DEVICE_TYPE = "DEVICETYPE"
     #if DEBUG
     @objc
-    static var CONNECT_DOMAIN = "https://nabi.104-dev.com.tw/"
+    static var CONNECT_DOMAIN = "https://xxx.104-dev.com.tw/"
     #else
     @objc
-    static var CONNECT_DOMAIN = "https://nabi.104.com.tw/"
+    static var CONNECT_DOMAIN = "https://xxx.104.com.tw/"
     #endif
     static var AUTH_T = "t"
     

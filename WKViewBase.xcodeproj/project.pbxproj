@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		AC15EA822ABAC0070041C406 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = AC15EA812ABAC0070041C406 /* README.md */; };
-		ACDB690B25B5306600674097 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ACDB690A25B5306500674097 /* GoogleService-Info.plist */; };
 		C85DDA64D09C32CC7D263ADB /* Pods_WKViewBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F47F12D028AC62E952E8831F /* Pods_WKViewBase.framework */; };
 		CD39E7C122DDCD7B002DA589 /* fastlane in Resources */ = {isa = PBXBuildFile; fileRef = CD39E7C022DDCD7B002DA589 /* fastlane */; };
 		CDFAA7F3215B7AC7009F13AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFAA7F2215B7AC7009F13AA /* AppDelegate.swift */; };
@@ -26,7 +25,6 @@
 		24479CF8845565B74EA2E6BC /* Pods-WKViewBase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WKViewBase.release.xcconfig"; path = "Target Support Files/Pods-WKViewBase/Pods-WKViewBase.release.xcconfig"; sourceTree = "<group>"; };
 		651088A16FAA9B1F7932F419 /* Pods-WKViewBase.ad hoc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WKViewBase.ad hoc.xcconfig"; path = "Target Support Files/Pods-WKViewBase/Pods-WKViewBase.ad hoc.xcconfig"; sourceTree = "<group>"; };
 		AC15EA812ABAC0070041C406 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		ACDB690A25B5306500674097 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CD39E7C022DDCD7B002DA589 /* fastlane */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fastlane; sourceTree = "<group>"; };
 		CDFAA7EF215B7AC7009F13AA /* WKViewBase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WKViewBase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDFAA7F2215B7AC7009F13AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -95,7 +93,6 @@
 		CDFAA7F1215B7AC7009F13AA /* WKViewBase */ = {
 			isa = PBXGroup;
 			children = (
-				ACDB690A25B5306500674097 /* GoogleService-Info.plist */,
 				CDFAA80B215E2DEE009F13AA /* WKViewBase.entitlements */,
 				CDFAA7F2215B7AC7009F13AA /* AppDelegate.swift */,
 				CDFAA807215DD476009F13AA /* Domain.swift */,
@@ -183,7 +180,6 @@
 				AC15EA822ABAC0070041C406 /* README.md in Resources */,
 				CDFAA7FD215B7ACD009F13AA /* Assets.xcassets in Resources */,
 				CDFAA7F8215B7AC7009F13AA /* Main.storyboard in Resources */,
-				ACDB690B25B5306600674097 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

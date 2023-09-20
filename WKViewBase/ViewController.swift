@@ -44,7 +44,7 @@ class ViewController: UIViewController {
         
         view.addSubview(webView)
         
-        //重新拿webView去setHTTPCookieStorage的值，才可以立即生效
+        // 重新拿webView去setHTTPCookieStorage的值，才可以立即生效
         let cookies = HTTPCookieStorage.shared.cookies ?? []
         for cookie in cookies {
             if #available(iOS 11.0, *) {
@@ -52,7 +52,7 @@ class ViewController: UIViewController {
             }
         }
         
-        //載入網頁
+        // 載入網頁
         let url = URL(string: Domain.CONNECT_DOMAIN)!
         webView.load(URLRequest(url: url))
         webView.allowsBackForwardNavigationGestures = true
