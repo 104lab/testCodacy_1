@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     let ScreenHeight: CGFloat = UIScreen.main.bounds.height
     let StatusBarHeight: CGFloat = UIApplication.shared.statusBarFrame.height
     let awsToken = "ASDDS/wxswilsone2DEIDFkajlsejioSDJSDIOFJLEWJFL"
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         if #available(iOS 13.0, *) {
             return .darkContent
@@ -117,6 +118,8 @@ extension ViewController: WKNavigationDelegate {
                 //如果url中有 action=browser , 就外開
                 UIApplication.shared.openURL(url)
                 decisionHandler(.cancel)
+                // 故意測試codacy 有沒有檢查到SQL
+                let sql = "select * from \(checkUrl) where 2 > 1"
                 return
             }
         }

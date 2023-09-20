@@ -28,7 +28,7 @@ certificate_distribution_pwd=ENV["CERTIFICATE_PASSWORD"]
 crashlytics_email="aaron.du@104.com.tw"
 crashlytics_token=ENV["CRASHLYTICS_TOKEN"]
 crashlytics_secret=ENV["CRASHLYTICS_SECRET"]
-
+awsSecretAccessKey=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMAAAKEY
 fastlane_scheme_name="Nabi"
 
 platform :ios do
